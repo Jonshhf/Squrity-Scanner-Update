@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* General Body Styling */
+    body {
+      background-color: white;
+      font-family: 'Roboto', sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header Styling */
+    .header {
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .logo-img {
+      width: 45px;
+      object-fit: cover;
+      border-radius: 0.25rem;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      color: #343a40;
+    }
+
+    .header-right {
+      gap: 1rem;
+    }
+
+    .date-form {
+      width: 150px;
+    }
+
+    .date-form input {
+      font-size: 1rem;
+      border-radius: 0.25rem;
+      background-color: #ffffff;
+    }
+
+    .search-form input[type="search"] {
+      border-radius: 0.25rem 0 0 0.25rem;
+    }
+
+    .search-form button {
+      border-radius: 0 0.25rem 0.25rem 0;
+    }
+
+    /* Main Content Styling */
+    .news-title {
+      font-size: 25px;
+      margin-top: -25px;
+      margin-bottom: 1rem;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .news-description {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+}
+
+.sidebar-title {
+  font-size: 15px;
+  margin-bottom: 1rem;
+}
+
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.image-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(33.333% - 0.67rem); /* 3 images per row with gap adjustment */
+}
+
+.image {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10%;
+  filter: grayscale(50%) opacity(100%);
+}
+
+.name {
+  font-size: 15px;
+  font-weight: 200;
+  margin: 0.5rem 0 0;
+}
+
+.title {
+  font-size: 10px;
+  color: black;
+}
+
+    /* Footer Styling */
+    footer {
+      background-color: #343a40;
+      color: #ffffff;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 992px) {
+      .news-title {
+        font-size: 20px;
+      }
+
+      .news-description {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      .news-title {
+        font-size: 20px;
+      }
+
+      .news-description {
+        font-size: 0.875rem;
+      }
+    }
+
+    .form-control:disabled {
+      background-color: white !important;
+      border: #ffffff !important;
+      opacity: 70%;
+      font-size: 12px;
+    }
+
+    span {
+      color: black;
+      font-size: 13px;
+    }
+   
+    .fa-facebook {
+    color: #38bdf8;
+    font-size: 20px;
+    border: 1px solid #d1d5db; /* Square border */
+    padding: 5px; /* Space inside the border */
+    border-radius: 5%; /* Slightly rounded corners */
+    text-decoration: none; /* Removes underline */
+    }
+
+   .fa-whatsapp{
+      color: green;
+      font-size: 20px;
+      border: 1px solid #d1d5db; /* Square border */
+    padding: 5px; /* Space inside the border */
+    border-radius: 5%; /* Slightly rounded corners */
+    }
+    .fa-envelope-circle-check{
+      color: #f472b6;
+      font-size: 20px;
+      border: 1px solid #d1d5db; /* Square border */
+    padding: 5px; /* Space inside the border */
+    border-radius: 5%; /* Slightly rounded corners */
+    }
+    .fa-phone-volume{
+      color: #6b7280;
+      font-size: 18px;
+      border: 1px solid #d1d5db; /* Square border */
+    padding: 5px; /* Space inside the border */
+    border-radius: 5%; /* Slightly rounded corners */
+    }
+
+/* Slide Bar Styling */
+.slide-bar {
+  position: fixed;
+  right: -250px;
+  top: 0;
+  height: 100%;
+  width: 250px;
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  transition: right 0.3s ease;
+  z-index: 1000;
+  padding-top: 10px;
+}
+
+.bar-header {
+  padding: 0 20px;
+}
+
+.menu-title {
+  color: #333;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.close-menu {
+  background-color: transparent;
+  color: #333;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.close-menu:hover {
+  color: #ff0000; /* Optional: Add hover color for close icon */
+}
+
+.bar-menu {
+  padding: 20px;
+}
+
+.bar-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.bar-menu ul li {
+  margin: 20px 0;
+}
+
+.bar-menu ul li a {
+  color: #333; /* Change this to match your design */
+  text-decoration: none;
+  font-size: 1.2rem;
+  display: block;
+}
+
+.bar-menu ul li a:hover {
+  color: #ff0000; /* Optional: Add hover color for links */
+}
+
+/* Active State for Slide Bar */
+.slide-bar.active {
+  right: 0;
+}
+/* Menu Toggle Button */
+/* Menu Toggle Button */
+.menu-toggle {
+  background-color: transparent; /* No background color */
+  color: #333; /* Dark text color */
+  border: none; /* Dark border */
+  padding: 10px 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 50%; /* Rounded button */
+  transition: transform 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.menu-toggle:focus {
+  outline: none; /* Remove focus outline */
+}
+.py-3 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header bg-white border-bottom">
+    <div class="container d-flex justify-content-between align-items-center py-3">
+      <a href="#" class="logo d-flex align-items-center">
+        <img src="sssu.png" alt="Nirapotta News Logo" class="logo-img">
+        <span class="logo-text ms-2"><img style="width: 300px;"
+           src="logo_text.jpg" alt=""></span>
+      </a>
+      <div class="header-right d-flex align-items-center">
+        <button id="menuToggle" class="menu-toggle">☰</button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Slide Bar -->
+  <aside id="slideBar" class="slide-bar">
+    <div class="bar-header d-flex justify-content-between align-items-center">
+      <h2 class="menu-title">Menu</h2>
+      <button id="closeMenu" class="close-menu">&times;</button>
+    </div>
+    <nav class="bar-menu">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </aside>
+  
+  
+
+
+  <p class="ms-3 mt-3"> 
+    <a href="https://www.facebook.com" target="_blank"  style="text-decoration: none; ">
+      <i class="fa-brands fa-facebook"></i>
+    </a>&nbsp;&nbsp;
+    
+    <a href="https://wa.me/1234567890" target="_blank"  style="text-decoration: none; ">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>&nbsp;&nbsp;
+    
+    <a href="mailto:example@gmail.com" style="text-decoration: none; ">
+      <i class="fa-solid fa-envelope-circle-check"></i>
+    </a>&nbsp;&nbsp;
+    
+    <a href="tel:+1234567890" style="text-decoration: none; ">
+      <i class="fa-solid fa-phone-volume"></i>
+    </a>&nbsp;&nbsp;
+    
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;প্রতিদিনের নিউজ আপডেট
+  </p>
+  <hr style="color: #6b7280">
+  <p class="ms-3" style="color: black; opacity: 70%;"><i class="fa-solid fa-map-location-dot" style="color: black;"></i>&nbsp;&nbsp;বীরগঞ্জ, দিনাজপুর 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span><i class="fa-regular fa-clock"></i> ২৮ আগস্ট ২০২৪</span>
+  </p>
+  <!-- Main Content -->
+  <main class="container my-5">
+    <div class="row">
+      <!-- Main Article -->
+      <div class="col-lg-8">
+        <div class="news-content mb-4">
+          <h1 class="news-title">সাধারণ শিক্ষাথীদের উদ্যোগে বীরগঞ্জে এই প্রথম চালু হতে চলেছে ডিজিটাল নিরাপত্তা প্লার্টফর্ম NirapottaBD ওয়েবসাইট</h1>
+          <img src="barner.jpg" alt="News Image" class="img-fluid mb-3 rounded">
+          <p class="news-description">"NirapottaBD" হলো সাধারণ & নিরপেক্ষ শিক্ষাথীদের উদ্যোগে তৈরী একটি ডিজিটাল নিরাপত্তা প্লার্টফর্ম। সকলের সার্বিক নিরাপত্তা নিশ্চিত করাই আমাদের মূল লক্ষ্য। আপনার নিরাপত্তা আমাদের দায়িত্ব !
+            <br>
+            জীবের মধ্যে সবচেয়ে সম্পূর্ণতা মানুষের। কিন্তু সবচেয়ে অসম্পূর্ণ হয়ে সে জন্মগ্রহণ করে। বাঘ ভালুক তার জীবনযাত্রার পনেরো- আনা মূলধন নিয়ে আসে প্রকৃতির মালখানা থেকে। জীবরঙ্গভূমিতে মানুষ এসে দেখা দেয় দুই শূন্য হাতে মুঠো বেঁধে।
+   
+   মানুষ আসবার পূর্বেই জীবসৃষ্টিযজ্ঞে প্রকৃতির ভূরিব্যয়ের পালা শেষ হয়ে এসেছে। বিপুল মাংস, কঠিন বর্ম, প্রকাণ্ড লেজ নিয়ে জলে স্থলে পৃথুল দেহের যে অমিতাচার প্রবল হয়ে উঠেছিল তাতে ধরিত্রীকে দিলে ক্লান্ত করে। প্রমাণ হল আতিশয্যের পরাভব অনিবার্য। পরীক্ষায় এটাও স্থির হয়ে গেল যে, প্রশ্রয়ের পরিমাণ যত বেশি হয় দুর্বলতার বোঝাও তত দুর্বহ হয়ে ওঠে। নূতন পর্বে প্রকৃতি যথাসম্ভব মানুষের বরাদ্দ কম করে দিয়ে নিজে রইল নেপথ্যে।
+   
+   মানুষকে দেখতে হল খুব ছোটো, কিন্তু সেটা একটা কৌশল মাত্র। এবারকার জীবযাত্রার পালায় বিপুলতাকে করা হল বহুলতায় পরিণত। মহাকায় জন্তু ছিল প্রকাণ্ড একলা, মানুষ হল দূরপ্রসারিত অনেক।
+          </p>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="col-lg-4">
+        <div class="sidebar bg-light p-3 rounded">
+          <h3 class="sidebar-title">NirapottaBD প্রজেক্টের উদ্যোগটা শিক্ষার্থীবৃন্দ </h3>
+          <div class="image-grid">
+            <div class="image-item">
+              <img src="imge pranto.jpg" alt="Person 1" class="image">
+              <h4 class="name">Pranto Roy</h4>
+              <p class="title">CEO & Founder <br> Pixel Innovations</p>
+            </div>
+            <div class="image-item">
+              <img src="diya.jpg" alt="Person 3" class="image">
+              <h4 class="name">Diya Hossain</h4>
+              <p class="title">Managing Director <br> Pixel Innovations</p>
+            </div>
+            <div class="image-item">
+              <img src="utsho.jpg" alt="Person 2" class="image">
+              <h4 class="name">Utsho Singho</h4>
+              <p class="title">CO Founder <br> Pixel Innovations</p>
+            </div>
+            <div class="image-item">
+              <img src="thun.jpg" alt="Person 4" class="image">
+              <h4 class="name">Tuhin Hasan</h4>
+              <p class="title">volunteer <br> NirapottaBD</p>
+            </div>
+            <div class="image-item">
+              <img src="atik.jpg" alt="Person 5" class="image">
+              <h4 class="name">Atik Islam</h4>
+              <p class="title">volunteer <br>NirapottaBD</p>
+            </div>
+            <div class="image-item">
+              <img src="sovon.jpg" alt="Person 6" class="image">
+              <h4 class="name">Sovon Islam</h4>
+              <p class="title">Markeing Director <br>NirapottaBD
+              </p>
+            </div>
+          </div>
+        </div>
+      </aside>
+      
+      
+      
+      
+      
+      
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+      <p>&copy; 2024 NewsPage. All rights reserved. | Designed by Pranto</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+
+// Toggle the slide bar on and off
+document.getElementById('menuToggle').addEventListener('click', function() {
+  document.getElementById('slideBar').classList.toggle('active');
+});
+
+// Close the slide bar when the close icon is clicked
+document.getElementById('closeMenu').addEventListener('click', function() {
+  document.getElementById('slideBar').classList.remove('active');
+});
+
+  </script>
+  
+</body>
+</html>
